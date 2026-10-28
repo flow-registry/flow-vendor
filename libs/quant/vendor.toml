@@ -1,0 +1,8 @@
+name = "quant"
+version = "1.0.0+flow1"
+upstream = "assistbox/js-runtime trusted/quant.js"
+license = "Apache-2.0"
+maintainer = "assistbox"
+collection = "main"
+channel = "stable"
+api = ["blackScholes", "greeks", "impliedVol"]

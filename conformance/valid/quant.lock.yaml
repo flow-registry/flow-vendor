@@ -1,0 +1,12 @@
+vendor_lock: "1"
+entries:
+  - name: "quant"
+    version: "1.0.0+flow1"
+    upstream: "assistbox/js-runtime trusted/quant.js"
+    entry: "vendor/quant.js"
+    entry_sha256: "33fd481807da7ca268d53c0fad383291ef5296c721c7345a2b4a72c466354e61"
+    builder: "flow-vendor-cli"
+    builder_version: "0.1.0"
+    builder_flags: "check+emit"
+    collection: "main"
+    channel: "stable"

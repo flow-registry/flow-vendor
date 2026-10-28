@@ -1,0 +1,8 @@
+name = "binance-utils"
+version = "0.1.0+flow1"
+upstream = "assistbox authored (inspired by binance/binance-connector-js pure subset)"
+license = "Apache-2.0"
+maintainer = "assistbox"
+collection = "main"
+channel = "edge"
+api = ["sha256", "hmacSha256", "queryString", "sign", "normalizeQuantity", "normalizePrice", "checkFilters", "decodeKline"]

@@ -1,0 +1,12 @@
+vendor_lock: "1"
+entries:
+  - name: "binance-utils"
+    version: "0.1.0+flow1"
+    upstream: "assistbox authored"
+    entry: "vendor/binance-utils.js"
+    entry_sha256: "3db916941d8eaca4ff3b5d2367e197604e4167543137644323eaf75a1e532e19"
+    builder: "flow-vendor-cli"
+    builder_version: "0.1.0"
+    builder_flags: "check+emit"
+    collection: "main"
+    channel: "edge"

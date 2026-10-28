@@ -62,7 +62,7 @@ entries:
 ```
 
 - `entries` 与包内 `vendor/` 文件**双射**；`entry`/`name` 重复即拒。
-- `name` 不得与宿主 trusted 名冲突——同名即拒（trusted 表由宿主编译期固定）。
+- `name` 不得与**当前**宿主 trusted 名冲突——同名即拒（表由宿主编译期固定，检查以检查时刻为准；trusted 条目摘除后同名 vendor 合法）。
 - `builder*` 是复现证据，不是信任声明。
 - `vulnerable` 不进包内 lock（包字节不可变）：落在 registry 索引条目上，安装期按来源策略判定。
 
@@ -70,12 +70,13 @@ entries:
 
 ```yaml
 uses:
-  - { name: "quant", minVersion: 1 }         # trusted 名：宿主表
-  - { name: "quant-lib", minVersion: "2.3" } # vendor 名：vendor.lock 解析
+  - { name: "quant", minVersion: "1.0" }     # vendor 名：vendor.lock 解析
+  - { name: "stats", minVersion: 1 }         # trusted 名：宿主表
 ```
 
 - vendor 名先查 `vendor.lock`，版本不足即**导入期**拒绝。
 - 未在 `uses:` 声明的 vendor 条目不被物化层注入 `require` 影子——可携带但不可触达。
+- `script.eval` 通道（非 `.flow`）：eval 实参携带同形 `uses` 字段，解析目标是**宿主侧 vendor store**（已安装条目）而非包内 `vendor/`；解析身份 `{name, version, entry_sha256}` 进 dispatch/fire 记录。
 
 ## 5. 收录分档（DFSG 式）
 
